@@ -6,9 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <form>
+        Author<input id="author" type="text"> 
+        Title <input id="title" type="text"> 
+        Pages <input id="pages" type="number">
+
+        <div>
+            <label>Read or not?
+                <select>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </label>
+        </div>
+        <button id="submit--button">Submit</button>
+        <div id="book--list">Books:
+            <p></p>
+        </div>
+    </form>
 </body>
 </html>
