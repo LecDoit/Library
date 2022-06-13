@@ -1,47 +1,25 @@
+let btnadd = document.querySelector("#submit--button")
+let bookList = document.getElementById('book--list')
 
-// let submitButton = document.getElementById('submit--button')
-
-// function getVal(){
-//     let authorval=document.getElementById('author').value;
-//     let titleval=document.getElementById('title').value;
-//     let pagesval=document.getElementById('pages').value;
-//     const book1 = new Book(authorval,titleval,pagesval)
-//     return book1
-// }
-
-
- 
-
-
-
-// function Book(author,title,pages,read){
-//     this.author = author;
-//     this.title = title;
-//     this.pages = pages;
-//     this.read = read;
-// };
-
-// function addBookToLibrary(){
-//     console.log('adding book')
-//     let tag = document.createElement('p')
-//     let text = document.createTextNode("book1")
-//     tag.appendChild(text)
-//     bookList.a    // let tag = document.createElement('p')
-    // let text = document.createTextNode(books)
-    // tag.appendChild(text)
-    // bookList.appendChild(tag)
-// function deleteBookFromLibrary(){
-//     console.log("deletin book")
-// };
-
-
-
-// submitButton.addEventListener('click',addBookToLibrary)
-// submitButton.addEventListener('click',getVal)
 
 let books = [];
 
-let addBook = (ev)=>{
+let book1 = {
+    id:"202020",
+    author:'Adam',
+    title:'potop',
+    pages:10,
+}
+let book2 = {
+    id:"202021",
+    author:'Karol',
+    title:'wojtyla',
+    pages:2137
+}
+books.push(book1,book2)
+
+
+let addBook = function(ev){
     ev.preventDefault();
     let book = {
         id: Date.now(),
@@ -51,39 +29,48 @@ let addBook = (ev)=>{
     }
     books.push(book)
     document.forms[0].reset();
-
-    console.log(books)
-    let bookList = document.getElementById('book--list')
-    bookList.textContent = JSON.stringify(books)
 }
 
+btnadd.addEventListener('click',addBook)
 
-document.getElementById('submit--button').addEventListener('click',addBook)
-    
+function rmv(array, element){
+    let index = array.indexOf(element);
+    array.splice(index,1)
+}
+
+let refreshBookStore = function(){
+    bookList.innerHTML= '';
+    for (let i=0; i < books.length;i++){
+
+        let NewDiv = document.createElement("div");
+        let closebut = document.createElement("button")
+        closebut.innerHTML = "delete"
+        bookList.appendChild(closebut)
+        bookList.appendChild(NewDiv)
+        NewDiv.textContent = JSON.stringify(books[i])
+        NewDiv.dataset.name = books[i].id
+        closebut.dataset.name = books[i].id
+        closebut.classList.add(books[i].id)
+        closebut.onclick = function(){
+            rmv(books,books[i].id)
+            refreshBookStore()
+        }
+        }
+        }
 
 
+refreshBookStore()
+btnadd.addEventListener('click',refreshBookStore)
 
 
+let addBookButton = document.getElementById('newbook--button')
 
+let form = document.getElementById('form')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let x = function(){
+    form.classList.toggle('active');
+}
+addBookButton.addEventListener("click",x)
 
 
 
