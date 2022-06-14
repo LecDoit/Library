@@ -108,11 +108,15 @@ btnadd.addEventListener('click',refreshBookStore)
 let addBookButton = document.getElementById('newbook--button')
 
 let form = document.getElementById('form')
+let blvck = document.getElementById('blackout')
 
-let x = function(){
+
+let active = function(){
     form.classList.toggle('active');
+    blvck.classList.toggle('active');
+
 }
-addBookButton.addEventListener("click",x)
+addBookButton.addEventListener("click",active)
 
 
 

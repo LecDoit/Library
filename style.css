@@ -1,19 +1,87 @@
+body{
+    background-image: url(nero-swatch.jpg);
 
 
-.lib{
-    border-color: black;
-    border-style: solid;
+
+    margin: 0;
 }
-.form{
-    border-color: red;
-    border-style: solid; 
+.header{
+    color: white;
+
+
+    font-size: 34px;
+    display: grid;
+    font-family: 'Times New Roman';
+    padding-left: 26%;
+    position: relative;
+    height: 10vh;
+    align-items: center;
+    box-shadow: 5px 5px 150px rgba(255, 255, 255, 0.158)
+}
+.bottom{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2%;
+    height: 30px;
+}
+#newbook--button{
+    color: white;
+    font-size: 25px;
+    font-family: 'Times New Roman';
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 5px 5px 150px rgba(255, 255, 255, 0.1);
+    border: none;
+    transition: 0.5s;
+  
+}
+#newbook--button:hover{
+    background-color: rgba(255, 255, 255, 0.01);
+    box-shadow: 5px 5px 150px rgba(255, 255, 255, 0.3);
+    transition: 0.5s;
+ 
+
+}
+
+.submitform{
     position: fixed;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%) scale(0);
+    color: white;
+    transform: 0.5s;
+    background-color: rgba(255, 255, 255, 0.6) ;
+    border: none
 
 }
 
-.form.active{
+.submitform.active{
     transform:translate(-50%,-50%) scale(1);
+    color: black;
+    display: grid;
+    background-color: rgba(255, 255, 255, 0.9) ;
+    border: 1px solid black;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 00px 0px 100px rgba(255, 255, 255, 0.6);
+    border-radius: 5px 5px 5px;
+
+
+
+}
+
+#blackout{
+    background-color: rgba(0, 0, 0, 0) ; 
+    transition: 0.5s;
+    position:relative;
+}
+
+#blackout.active{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.6) ;
 }
