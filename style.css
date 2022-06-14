@@ -1,0 +1,19 @@
+
+
+.lib{
+    border-color: black;
+    border-style: solid;
+}
+.form{
+    border-color: red;
+    border-style: solid; 
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+
+}
+
+.form.active{
+    transform:translate(-50%,-50%) scale(1);
+}

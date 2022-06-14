@@ -9,23 +9,25 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <form>
+    <form class="form" id="form">
         Author<input id="author" type="text"> 
         Title <input id="title" type="text"> 
         Pages <input id="pages" type="number">
+        <label id="switch" > 
+            <input id="checkboxIn" type="checkbox">
+            <span class="slider">Read</span>
+        </label>
 
-        <div>
-            <label>Read or not?
-                <select>
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </label>
-        </div>
         <button id="submit--button">Submit</button>
-        <div id="book--list">Books:
-            <p></p>
-        </div>
     </form>
+    <div class="lib">
+
+        <button data-newbook-button="#newbook" id="newbook--button">New Book</button>
+        <div id="book--list">Books:
+
+        </div>
+    </div>
+
+
 </body>
 </html>
