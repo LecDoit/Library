@@ -1,11 +1,6 @@
 let btnadd = document.querySelector("#submit--button")
 let bookList = document.getElementById('book--list')
-
-
 let books = [];
-
-
-
 
 let addBook = function(ev){
     ev.preventDefault();
@@ -22,87 +17,92 @@ let addBook = function(ev){
 
 btnadd.addEventListener('click',addBook)
 
+
 function rmv(array, element){
-    let index = array.indexOf(element);
-    array.splice(index,1)
-    console.log(index)
+    array.splice(element,1)
 }
 
-function clicked(clicked_id){
 
-    return clicked_id
-}
 
 function toggle(array,element){
 
-    function searchid(book){
-        return book.id == element
+    if ((array[element].read)== true){
+        array[element].read = false
+
+    }else if((array[element].read)== false){
+        array[element].read = true   
     }
-    let findindex = array.findIndex(searchid)
-    
-    let readornot = (array[findindex].read)
-        if ((array[findindex].read)== 'yes'){
-            let tickCheck = document.getElementById('checkbox').checked = 'false'
-            array[findindex].read = 'no'
-        }else if((array[findindex].read)=='no'){
-            let tickCheck = document.getElementById('checkbox').checked = 'true'
-            array[findindex].read = 'yes'
-        }
-
-
-
-
 }
+
+
 
 let refreshBookStore = function(){
     bookList.innerHTML= '';
     for (let i=0; i < books.length;i++){
 
         let NewDiv = document.createElement("div");
+        let authordiv = document.createElement('div')
+        let titlediv = document.createElement('div')
+        let pagesdiv = document.createElement('div')
         let closebut = document.createElement("button")
-        let togglebut = document.createElement("div")
-       
-        togglebut.innerHTML = `<label id="switch" > 
-                                    <input type="checkbox">
-                                    <span class="slider">Read</span>
-                                </label>`
-
-        togglebut.classList.add(books[i].id)
-
-        togglebut.onclick = function(){
-            let tbval = this.classList.value
-            toggle(books,tbval)
-            
-
-        }
-
-        closebut.innerHTML = "delete"
-        
-        
-        
-        bookList.appendChild(togglebut)
-
-        bookList.appendChild(closebut)
-        bookList.appendChild(NewDiv)
-
-        NewDiv.textContent = JSON.stringify(books[i])
-        NewDiv.dataset.name = books[i].id
-        closebut.dataset.name = books[i].id
-        closebut.classList.add(books[i].id)
+        let togglebut = document.createElement("button")
 
 
-        closebut.onclick = function(){
-            rmv(books,books[i].id)
+
+        if (books[i].read == true){
+            togglebut.innerHTML = "Read"
+            togglebut.classList.add('green')
+        } else if (books[i].read == false ){
+            togglebut.innerHTML = "Not read"}
+            togglebut.classList.add('red')
+
+
+        togglebut.classList.add("checkbox")
+        closebut.classList.add("closebox")
+
+        togglebut.setAttribute('id',i)
+
+      
+        togglebut.addEventListener('click',function(){
+            let tbid = this.id
+            toggle(books,tbid)
             refreshBookStore()
+        })
+        
+
+
+        closebut.innerHTML = "Delete"
+
+        bookList.appendChild(NewDiv)
+     
+        NewDiv.classList.add('storage')
+        NewDiv.appendChild(authordiv).classList.add('authordiv')
+        NewDiv.appendChild(titlediv).classList.add('titlediv')
+        NewDiv.appendChild(pagesdiv).classList.add('pagesdiv')
+        authordiv.textContent= books[i].author
+        titlediv.textContent= books[i].title
+        pagesdiv.textContent= books[i].pages
+        NewDiv.appendChild(togglebut)
+        NewDiv.appendChild(closebut)
+        NewDiv.dataset.name = i
+        closebut.setAttribute('id',books[i].id)
+        closebut.dataset.name = i
+
+
+        closebut.addEventListener("click",function(){
+            let thisval = this.dataset.name
+            rmv(books,thisval)
+            refreshBookStore()
+        })
+        }
         }
 
-        }
-
-        }
 
 
 refreshBookStore()
+
 btnadd.addEventListener('click',refreshBookStore)
+
 
 
 let addBookButton = document.getElementById('newbook--button')
@@ -114,16 +114,18 @@ let blvck = document.getElementById('blackout')
 let active = function(){
     form.classList.toggle('active');
     blvck.classList.toggle('active');
-
 }
 addBookButton.addEventListener("click",active)
 
+document.addEventListener('keydown',function(){
 
+    if (blvck.classList =='active'){
+        if (event.key === 'Escape'){
+            active();
+        }
+    }
+})
 
-
-
-
-
-
+let button2del = document.getElementsByClassName('closebox')
 
 
