@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="scriptClass.js" defer></script>
 </head>
 <body>
     <div id="blackout">
@@ -25,17 +25,25 @@
         </div>
     </div>
     <div id="submitform">
-    <form class="submitform" id="form">Add new book
-        <input id="author" type="text" placeholder="Author"> 
-        <input id="title" type="text" placeholder="Title"> 
-        <input id="pages" type="number" placeholder="Pages">
-        <label id="switch" > 
-            <input id="checkboxIn" type="checkbox">
-            <span class="slider">Read</span>
-        </label>
+        <form class="submitform" id="form">Add new book
+       
+            <input id="author" type="text" placeholder="Author" required> 
 
-        <button id="submit--button">Submit</button>
-    </form>
+            <input id="title" type="text" placeholder="Title" required> 
+
+            <input id="pages" type="number" placeholder="Pages" required>
+
+
+            <label for="checkboxIn" id="switch" > 
+                <input id="checkboxIn" type="checkbox">
+                <span class="slider">Read</span>.
+            </label>
+
+    
+           <button id="submit--button">Submit</button>
+        </form>
+
+        
     </div>
 
 </body>

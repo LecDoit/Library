@@ -15,11 +15,12 @@ class AddBook {
 let addBookToLib = function(ev){
     ev.preventDefault();
     let makin = (function(author,title,pages,read){
+
         let a = document.getElementById('author').value;
         let t = document.getElementById("title").value;
         let p =document.getElementById('pages').value;
         let r = document.getElementById('checkboxIn').checked;
-        let book = new AddBook(a,t,p,r)
+        let book = new AddBook(a)
         console.log(book)
         books.push(book)  
         document.forms[0].reset();
@@ -29,7 +30,12 @@ let addBookToLib = function(ev){
 }
 
 
-btnadd.addEventListener('click',addBookToLib)
+btnadd.addEventListener('click',function(e){
+
+    addBookToLib
+
+
+})
 
 
 function rmv(array, element){
